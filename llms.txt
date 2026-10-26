@@ -1,0 +1,21 @@
+# Eleve Digital Lab
+
+> Laboratório de prótese dentária e serviços digitais para clínicas e dentistas, na Av. dos Autonomistas, 896, Vila Yara, Osasco (SP), CEP 06020-010 — mesmo endereço da Eleve Odontologia Avançada. Prótese em porcelana, cerômero e zircônia, CAD/CAM e escaneamento intraoral com DEXIS IS 3700. Orçamento pelo WhatsApp (11) 96018-5071.
+
+## Dados do laboratório
+
+- Endereço: Av. dos Autonomistas, 896 - Vila Yara, Osasco - SP, 06020-010
+- Horário: segunda a sexta, 9h às 21h; sábado, 10h às 14h; domingo, fechado
+- WhatsApp: (11) 96018-5071 (https://wa.me/5511960185071)
+- Instagram: https://www.instagram.com/dr.guilhermelopes_/
+
+## Tabela de valores
+
+- Prótese: lente de porcelana R$ 300; coroa de porcelana R$ 350; lente de cerômero R$ 200; coroa de cerômero R$ 230; zircônia R$ 390; prótese fixa R$ 390
+- CAD/CAM (mockup, enceramento, diagnóstico; implantes e lentes): desenho no CAD (cadista) R$ 45 por elemento; modelo R$ 50 por arcada; mockup R$ 300 por arcada
+- Escaneamento intraoral DEXIS IS 3700: diária do scanner R$ 1.400; atende Osasco, com frete para outras regiões
+
+## Páginas
+
+- [Página inicial](https://{{DOMINIO}}/): tabela de prótese, CAD/CAM, escaneamento, endereço e horários
+- [Política de Privacidade](https://{{DOMINIO}}/politica-de-privacidade.html)
