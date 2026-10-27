@@ -26,8 +26,8 @@
   <meta property="og:image:height" content="630">
   <meta name="twitter:card" content="summary_large_image">
 
-  <link rel="stylesheet" href="assets/css/styles.css?v=202610261947">
-  <script src="assets/js/main.js?v=202610261947" defer></script>
+  <link rel="stylesheet" href="assets/css/styles.css?v=202610271431">
+  <script src="assets/js/main.js?v=202610271431" defer></script>
 
   <!-- GEO: @graph com @id estáveis. Só dados do briefing; preços com valor confirmado entram como Offer. -->
   <script type="application/ld+json">
@@ -77,6 +77,7 @@
             { "@type": "Offer", "price": "45.00", "priceCurrency": "BRL", "itemOffered": { "@type": "Service", "name": "Desenho no CAD (cadista), por elemento" } },
             { "@type": "Offer", "price": "50.00", "priceCurrency": "BRL", "itemOffered": { "@type": "Service", "name": "Modelo, por arcada" } },
             { "@type": "Offer", "price": "300.00", "priceCurrency": "BRL", "itemOffered": { "@type": "Service", "name": "Mockup, por arcada" } },
+            { "@type": "Offer", "price": "250.00", "priceCurrency": "BRL", "itemOffered": { "@type": "Service", "name": "Escaneamento intraoral DEXIS IS 3700" } },
             { "@type": "Offer", "price": "1400.00", "priceCurrency": "BRL", "itemOffered": { "@type": "Service", "name": "Diária do scanner intraoral DEXIS IS 3700" } }
           ]
         },
@@ -128,36 +129,103 @@
 
 <main id="conteudo">
 <!-- SECTION: hero -->
-<!-- Leiaute B2B (26/10/2026): o hero é o índice da tabela, com o menor valor de cada frente. "A partir de" sai da própria tabela do cliente. -->
-<section id="inicio" class="border-b border-linha" aria-labelledby="hero-titulo">
-  <div class="container-lp grid gap-12 pt-12 pb-16 md:pt-20 md:pb-20 lg:grid-cols-[1.15fr_1fr] lg:items-end lg:gap-20">
-    <div>
-      <h1 id="hero-titulo">
-        <span class="eyebrow block">Laboratório para clínicas e dentistas</span>
-        <span class="titulo mt-6 block text-[1.875rem] sm:text-5xl lg:text-[3.25rem]">Prótese, CAD/CAM e escaneamento em um só laboratório</span>
-      </h1>
-      <p class="mt-7 max-w-[34rem] text-lg leading-relaxed text-texto-suave">Tabela de valores aberta, scanner intraoral DEXIS IS 3700 e o caso combinado direto pelo WhatsApp. Na Vila Yara, em Osasco; para outras regiões, com frete.</p>
-      <div class="mt-10 flex flex-wrap gap-3">
-        <a href="https://wa.me/5511960185071?text=Ol%C3%A1!%20Vi%20o%20site%20do%20laborat%C3%B3rio%20e%20gostaria%20de%20um%20or%C3%A7amento." target="_blank" rel="noopener"
-           class="btn btn-marca btn-lg" data-track="whatsapp" data-origem="hero"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.870 9.870 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.860 9.860 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg> Pedir orçamento</a>
-        <a href="#tabela" class="btn btn-contorno btn-lg">Ver a tabela completa</a>
+<!-- Hero em banners (27/10/2026, pedido do operador): banners de fora a fora no topo, um por frente, com o menor valor de cada uma.
+     As abas são o índice das frentes; trocam sozinhas a cada 7 s (pausa no foco, no mouse e no botão).
+     Protótipo: fotos de banco (Unsplash) e ícones desenhados para a página, ver briefing.md, seção 9. -->
+<section id="inicio" class="pb-14 md:pb-20" aria-labelledby="hero-titulo">
+  <div class="banners" data-banners>
+    <div class="banners-palco">
+      <div class="banner banner-ativo" id="banner-protese" role="tabpanel" aria-labelledby="aba-protese" data-banner>
+        <img src="assets/img/banner-protese-1600.webp" srcset="assets/img/banner-protese-800.webp 800w, assets/img/banner-protese-1600.webp 1600w"
+             sizes="(min-width: 1152px) 72rem, 100vw" width="1600" height="1067" fetchpriority="high"
+             alt="Mãos fazendo o acabamento de uma prótese dentária com instrumentos" class="banner-foto">
+        <div class="container-lp"><div class="banner-conteudo">
+          <span class="banner-icone"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.2 3C5 3 3.3 4.8 3.3 7.2c0 2.1.8 3.5 1.5 5.1.6 1.4.8 3 1 4.8.3 2.3.9 3.9 2 3.9 1.4 0 1.6-2.5 2-4.3.3-1.3.8-2.3 2.2-2.3s1.9 1 2.2 2.3c.4 1.8.6 4.3 2 4.3 1.1 0 1.7-1.6 2-3.9.2-1.8.4-3.4 1-4.8.7-1.6 1.5-3 1.5-5.1C20.7 4.8 19 3 16.8 3c-1.9 0-2.8 1-4.8 1S9.1 3 7.2 3Z"/><path d="M8.5 8c1.1.5 2.3.8 3.5.8s2.4-.3 3.5-.8"/></svg></span>
+          <p class="eyebrow mt-5">Prótese</p>
+          <h2 class="titulo banner-titulo">Lentes, coroas e zircônia para a sua clínica</h2>
+          <p class="banner-texto">Peças em porcelana, cerômero e zircônia, feitas a partir do seu caso. Entrega em 10 dias úteis.</p>
+          <p class="banner-preco valor"><small>a partir de</small> R$&nbsp;200</p>
+          <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a href="https://wa.me/5511960185071?text=Ol%C3%A1!%20Gostaria%20de%20enviar%20um%20caso%20de%20pr%C3%B3tese%20para%20o%20laborat%C3%B3rio." target="_blank" rel="noopener"
+               class="btn btn-marca btn-lg" data-track="whatsapp" data-origem="hero-protese"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.870 9.870 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.860 9.860 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg> Enviar um caso</a>
+            <a href="#protese" class="folha-link">Ver os valores</a>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="banner" id="banner-cadcam" role="tabpanel" aria-labelledby="aba-cadcam" data-banner>
+        <img src="assets/img/banner-cadcam-1600.webp" srcset="assets/img/banner-cadcam-800.webp 800w, assets/img/banner-cadcam-1600.webp 1600w"
+             sizes="(min-width: 1152px) 72rem, 100vw" width="1600" height="1067" decoding="async"
+             alt="Modelo de arcada com coroas fresadas sobre blocos de usinagem" class="banner-foto">
+        <div class="container-lp"><div class="banner-conteudo">
+          <span class="banner-icone"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 3.8 7.2v9.6l8.2 4.4 8.2-4.4V7.2L12 2.8Z"/><path d="M3.8 7.2 12 11.6l8.2-4.4M12 11.6v9.6"/></svg></span>
+          <p class="eyebrow mt-5">CAD/CAM</p>
+          <h2 class="titulo banner-titulo">O caso desenhado no CAD antes de ir para a boca</h2>
+          <p class="banner-texto">Mockup, enceramento e diagnóstico para lentes e implantes. Desenho por elemento; modelo e mockup por arcada.</p>
+          <p class="banner-preco valor"><small>a partir de</small> R$&nbsp;45</p>
+          <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a href="https://wa.me/5511960185071?text=Ol%C3%A1!%20Gostaria%20de%20um%20or%C3%A7amento%20de%20CAD%2FCAM%20(mockup%2C%20enceramento%20ou%20diagn%C3%B3stico)." target="_blank" rel="noopener"
+               class="btn btn-marca btn-lg" data-track="whatsapp" data-origem="hero-cadcam"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.870 9.870 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.860 9.860 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg> Pedir um planejamento</a>
+            <a href="#cadcam" class="folha-link">Ver os valores</a>
+          </div>
+        </div></div>
+      </div>
+
+      <div class="banner" id="banner-escaneamento" role="tabpanel" aria-labelledby="aba-escaneamento" data-banner>
+        <img src="assets/img/banner-escaneamento-1600.webp" srcset="assets/img/banner-escaneamento-800.webp 800w, assets/img/banner-escaneamento-1600.webp 1600w"
+             sizes="(min-width: 1152px) 72rem, 100vw" width="1600" height="1067" decoding="async"
+             alt="Scanner intraoral apoiado no suporte, ao lado de um notebook" class="banner-foto">
+        <div class="container-lp"><div class="banner-conteudo">
+          <span class="banner-icone"><svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8V5.5a2 2 0 0 1 2-2H8M16 3.5h2.5a2 2 0 0 1 2 2V8M20.5 16v2.5a2 2 0 0 1-2 2H16M8 20.5H5.5a2 2 0 0 1-2-2V16"/><path d="M3 12h18"/><path d="M8 8.5c1.2-.6 2.6-1 4-1s2.8.4 4 1M8 15.5c1.2.6 2.6 1 4 1s2.8-.4 4-1"/></svg></span>
+          <p class="eyebrow mt-5">Escaneamento</p>
+          <h2 class="titulo banner-titulo">Moldagem digital com o DEXIS IS 3700</h2>
+          <p class="banner-texto">Por escaneamento ou pela diária do scanner. Atendemos Osasco; para outras regiões, com frete.</p>
+          <p class="banner-preco valor"><small>a partir de</small> R$&nbsp;250</p>
+          <div class="mt-7 flex flex-wrap items-center gap-x-6 gap-y-4">
+            <a href="https://wa.me/5511960185071?text=Ol%C3%A1!%20Gostaria%20de%20agendar%20um%20escaneamento%20com%20o%20DEXIS%20IS%203700." target="_blank" rel="noopener"
+               class="btn btn-marca btn-lg" data-track="whatsapp" data-origem="hero-escaneamento"><svg width="20" height="20" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M17.472 14.382c-.297-.149-1.758-.867-2.03-.967-.273-.099-.471-.148-.67.15-.197.297-.767.966-.94 1.164-.173.199-.347.223-.644.075-.297-.15-1.255-.463-2.39-1.475-.883-.788-1.48-1.761-1.653-2.059-.173-.297-.018-.458.13-.606.134-.133.298-.347.446-.52.149-.174.198-.298.298-.497.099-.198.05-.371-.025-.52-.075-.149-.669-1.612-.916-2.207-.242-.579-.487-.5-.669-.51-.173-.008-.371-.01-.57-.01-.198 0-.52.074-.792.372-.272.297-1.04 1.016-1.04 2.479 0 1.462 1.065 2.875 1.213 3.074.149.198 2.096 3.2 5.077 4.487.709.306 1.262.489 1.694.625.712.227 1.36.195 1.871.118.571-.085 1.758-.719 2.006-1.413.248-.694.248-1.289.173-1.413-.074-.124-.272-.198-.57-.347m-5.421 7.403h-.004a9.870 9.870 0 0 1-5.031-1.378l-.361-.214-3.741.982.998-3.648-.235-.374a9.860 9.860 0 0 1-1.51-5.26c.001-5.45 4.436-9.884 9.888-9.884 2.64 0 5.122 1.03 6.988 2.898a9.825 9.825 0 0 1 2.893 6.994c-.003 5.45-4.437 9.884-9.885 9.884m8.413-18.297A11.815 11.815 0 0 0 12.05 0C5.495 0 .16 5.335.157 11.892c0 2.096.547 4.142 1.588 5.945L.057 24l6.305-1.654a11.882 11.882 0 0 0 5.683 1.448h.005c6.554 0 11.890-5.335 11.893-11.893a11.821 11.821 0 0 0-3.48-8.413Z"/></svg> Agendar um escaneamento</a>
+            <a href="#escaneamento" class="folha-link">Ver os valores</a>
+          </div>
+        </div></div>
       </div>
     </div>
 
-    <nav aria-label="Frentes do laboratório">
-      <ul class="indice-frentes">
-        <li><a href="#protese"><span>Prótese <small>lentes, coroas, zircônia</small></span><span class="valor"><small>a partir de</small> R$ 200</span></a></li>
-        <li><a href="#cadcam"><span>CAD/CAM <small>desenho, modelo, mockup</small></span><span class="valor"><small>a partir de</small> R$ 45</span></a></li>
-        <li><a href="#escaneamento"><span>Escaneamento <small>DEXIS IS 3700</small></span><span class="valor"><small>diária</small> R$ 1.400</span></a></li>
-      </ul>
-    </nav>
+    <div class="banners-controles container-lp">
+      <div class="abas-frentes" role="tablist" aria-label="Frentes do laboratório">
+        <button type="button" role="tab" id="aba-protese" aria-controls="banner-protese" aria-selected="true" class="aba" data-aba>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M7.2 3C5 3 3.3 4.8 3.3 7.2c0 2.1.8 3.5 1.5 5.1.6 1.4.8 3 1 4.8.3 2.3.9 3.9 2 3.9 1.4 0 1.6-2.5 2-4.3.3-1.3.8-2.3 2.2-2.3s1.9 1 2.2 2.3c.4 1.8.6 4.3 2 4.3 1.1 0 1.7-1.6 2-3.9.2-1.8.4-3.4 1-4.8.7-1.6 1.5-3 1.5-5.1C20.7 4.8 19 3 16.8 3c-1.9 0-2.8 1-4.8 1S9.1 3 7.2 3Z"/><path d="M8.5 8c1.1.5 2.3.8 3.5.8s2.4-.3 3.5-.8"/></svg>
+          <span>Prótese <small>a partir de R$&nbsp;200</small></span>
+        </button>
+        <button type="button" role="tab" id="aba-cadcam" aria-controls="banner-cadcam" aria-selected="false" tabindex="-1" class="aba" data-aba>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M12 2.8 3.8 7.2v9.6l8.2 4.4 8.2-4.4V7.2L12 2.8Z"/><path d="M3.8 7.2 12 11.6l8.2-4.4M12 11.6v9.6"/></svg>
+          <span>CAD/CAM <small>a partir de R$&nbsp;45</small></span>
+        </button>
+        <button type="button" role="tab" id="aba-escaneamento" aria-controls="banner-escaneamento" aria-selected="false" tabindex="-1" class="aba" data-aba>
+          <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.4" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8V5.5a2 2 0 0 1 2-2H8M16 3.5h2.5a2 2 0 0 1 2 2V8M20.5 16v2.5a2 2 0 0 1-2 2H16M8 20.5H5.5a2 2 0 0 1-2-2V16"/><path d="M3 12h18"/><path d="M8 8.5c1.2-.6 2.6-1 4-1s2.8.4 4 1M8 15.5c1.2.6 2.6 1 4 1s2.8-.4 4-1"/></svg>
+          <span>Escaneamento <small>a partir de R$&nbsp;250</small></span>
+        </button>
+      </div>
+      <button type="button" class="banners-pausa" aria-label="Pausar a troca automática dos banners" data-banners-pausa hidden>
+        <svg class="icone-pausar" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><rect x="5" y="3" width="5" height="18" rx="1"/><rect x="14" y="3" width="5" height="18" rx="1"/></svg>
+        <svg class="icone-tocar" width="14" height="14" viewBox="0 0 24 24" fill="currentColor" aria-hidden="true"><path d="M6 4.5v15a1 1 0 0 0 1.5.86l12.5-7.5a1 1 0 0 0 0-1.72L7.5 3.64A1 1 0 0 0 6 4.5Z"/></svg>
+      </button>
+    </div>
+  </div>
+
+  <div class="container-lp mt-12 flex flex-col gap-6 md:mt-16 md:flex-row md:items-end md:justify-between">
+    <h1 id="hero-titulo">
+      <span class="eyebrow block">Laboratório para clínicas e dentistas</span>
+      <span class="titulo mt-5 block max-w-[38rem] text-[1.5rem] sm:text-[1.875rem] lg:text-[2.125rem]">Prótese, CAD/CAM e escaneamento em um só laboratório</span>
+    </h1>
+    <a href="#tabela" class="folha-link shrink-0 md:mb-1">Ver a tabela completa</a>
   </div>
 </section>
 <!-- /SECTION: hero -->
 
 <!-- SECTION: servicos -->
+<!-- Fundos intercalados a cada seção (27/10/2026, pedido do operador): preto (bg-fundo) e roxo (bg-superficie). -->
 <!-- A tabela é o centro da página: três colunas como uma folha de preços impressa. Valores da tabela do cliente (26/10/2026, briefing.md, seção 8). -->
-<section id="tabela" class="py-16 md:py-24" aria-labelledby="tabela-titulo">
+<section id="tabela" class="bg-superficie py-16 md:py-24" aria-labelledby="tabela-titulo">
   <div class="container-lp">
     <div class="flex flex-col gap-4 md:flex-row md:items-end md:justify-between">
       <div>
@@ -199,7 +267,7 @@
         <h3 id="escaneamento-titulo" class="folha-titulo">Escaneamento</h3>
         <p class="folha-texto">Moldagem digital com o scanner intraoral DEXIS IS 3700. Atendemos Osasco; para outras regiões, há frete.</p>
         <dl class="tabela-precos">
-          <div><dt>Escaneamento</dt><dd>{{PRECO_ESCANEAMENTO}}</dd></div>
+          <div><dt>Escaneamento</dt><dd>R$&nbsp;250</dd></div>
           <div><dt>Diária do scanner</dt><dd>R$&nbsp;1.400</dd></div>
           <div><dt>Frete <span>fora de Osasco</span></dt><dd class="text-texto-suave">a combinar</dd></div>
         </dl>
@@ -213,7 +281,7 @@
 
 <!-- SECTION: scanner -->
 <!-- Foto do equipamento enviada pelo cliente (26/10/2026). Fundo da cápsula no mesmo cinza da foto, para o recorte não aparecer. -->
-<section class="pb-16 md:pb-24" aria-labelledby="scanner-titulo">
+<section class="py-16 md:py-24" aria-labelledby="scanner-titulo">
   <div class="container-lp grid gap-10 lg:grid-cols-[1fr_1.35fr] lg:items-center lg:gap-16">
     <div>
       <p class="eyebrow">Escaneamento</p>
@@ -297,8 +365,8 @@
 <!-- /SECTION: localizacao -->
 
 <!-- SECTION: cta-intermediario -->
-<section class="pb-16 md:pb-24" aria-labelledby="cta-meio-titulo">
-  <div class="container-lp flex flex-col gap-8 border-t border-linha pt-16 md:flex-row md:items-end md:justify-between md:pt-20">
+<section class="bg-superficie py-16 md:py-20" aria-labelledby="cta-meio-titulo">
+  <div class="container-lp flex flex-col gap-8 md:flex-row md:items-end md:justify-between">
     <div>
       <h2 id="cta-meio-titulo" class="titulo text-[1.75rem] md:text-5xl">Mande o seu caso</h2>
       <p class="mt-6 max-w-[34rem] text-lg leading-relaxed text-texto-suave">Peça, planejamento ou escaneamento: conte pelo WhatsApp e receba o orçamento.</p>

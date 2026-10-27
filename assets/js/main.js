@@ -149,6 +149,102 @@ function iniciarGaleria() {
   });
 }
 
+/* Banners do hero: abas (padrão WAI-ARIA, setas do teclado) com troca automática.
+   Sem JS fica o primeiro banner. Com movimento reduzido, não troca sozinho. */
+function iniciarBanners() {
+  const raiz = document.querySelector('[data-banners]');
+  if (!raiz) return;
+  const abas = [...raiz.querySelectorAll('[data-aba]')];
+  const banners = [...raiz.querySelectorAll('[data-banner]')];
+  const botaoPausa = raiz.querySelector('[data-banners-pausa]');
+  const TEMPO = 7000;
+  const movimentoReduzido = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+  let atual = 0;
+  let timer = null;
+  let pausadoPeloUsuario = movimentoReduzido;
+  let emEspera = false;
+
+  raiz.style.setProperty('--banner-tempo', `${TEMPO}ms`);
+
+  const mostrar = (indice, focar = false) => {
+    atual = (indice + abas.length) % abas.length;
+    abas.forEach((aba, i) => {
+      const ativa = i === atual;
+      aba.setAttribute('aria-selected', String(ativa));
+      aba.tabIndex = ativa ? 0 : -1;
+      banners[i].classList.toggle('banner-ativo', ativa);
+    });
+    if (focar) abas[atual].focus();
+    reiniciar();
+  };
+
+  const rodando = () => !pausadoPeloUsuario && !emEspera && !document.hidden;
+
+  // Reinicia o relógio e a linha de progresso da aba ativa
+  const reiniciar = () => {
+    clearTimeout(timer);
+    raiz.classList.remove('banners-rodando');
+    raiz.classList.toggle('banners-parado', pausadoPeloUsuario);
+    raiz.classList.toggle('banners-espera', emEspera);
+    if (!rodando()) return;
+    void raiz.offsetWidth;
+    raiz.classList.add('banners-rodando');
+    timer = setTimeout(() => mostrar(atual + 1), TEMPO);
+  };
+
+  abas.forEach((aba, i) => {
+    aba.addEventListener('click', () => mostrar(i));
+    aba.addEventListener('keydown', (e) => {
+      const passo = { ArrowRight: 1, ArrowLeft: -1 }[e.key];
+      if (passo) mostrar(atual + passo, true);
+      else if (e.key === 'Home') mostrar(0, true);
+      else if (e.key === 'End') mostrar(abas.length - 1, true);
+      else return;
+      e.preventDefault();
+    });
+  });
+
+  // Mouse em cima ou foco dentro: espera; ao sair, recomeça a contagem
+  const esperar = (valor) => {
+    if (emEspera === valor) return;
+    emEspera = valor;
+    reiniciar();
+  };
+  raiz.addEventListener('mouseenter', () => esperar(true));
+  raiz.addEventListener('mouseleave', () => esperar(raiz.contains(document.activeElement)));
+  raiz.addEventListener('focusin', () => esperar(true));
+  raiz.addEventListener('focusout', (e) => {
+    if (!raiz.contains(e.relatedTarget)) esperar(raiz.matches(':hover'));
+  });
+  document.addEventListener('visibilitychange', reiniciar);
+
+  // Arrastar para o lado no celular troca o banner
+  let toqueX = null;
+  const palco = raiz.querySelector('.banners-palco');
+  palco?.addEventListener('touchstart', (e) => (toqueX = e.touches[0].clientX), { passive: true });
+  palco?.addEventListener('touchend', (e) => {
+    if (toqueX === null) return;
+    const dx = e.changedTouches[0].clientX - toqueX;
+    toqueX = null;
+    if (Math.abs(dx) > 50) mostrar(atual + (dx < 0 ? 1 : -1));
+  });
+
+  if (botaoPausa && !movimentoReduzido) {
+    botaoPausa.hidden = false;
+    botaoPausa.addEventListener('click', () => {
+      pausadoPeloUsuario = !pausadoPeloUsuario;
+      botaoPausa.setAttribute(
+        'aria-label',
+        pausadoPeloUsuario ? 'Retomar a troca automática dos banners' : 'Pausar a troca automática dos banners'
+      );
+      reiniciar();
+    });
+  }
+
+  mostrar(0);
+}
+
 iniciarConsentimento();
 iniciarTracking();
 iniciarGaleria();
+iniciarBanners();
